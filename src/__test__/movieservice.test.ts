@@ -21,7 +21,7 @@ test('should get mock data', async () => {
     let data = await getData(searchText);
     
     //Assert
-    expect(data.length).toBe(1);
+    expect(data.length).toBe(2);
     expect(data[0].Title).toBe("Avatar 2");
     expect(data[0].imdbID).toBe("12345");
     expect(data[0].Type).toBe("Science Fiction");
