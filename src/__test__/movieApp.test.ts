@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { init, handleSubmit, createHtml } from "../ts/movieApp";
+import { init, handleSubmit, createHtml, displayNoResult } from "../ts/movieApp";
 import * as movieApp from "../ts/movieApp";
 import { mockData } from "../ts/services/__mocks__/movieserviceMock";
 
@@ -54,4 +54,21 @@ test('should create new element for each movie when running createHtml()', () =>
 
     //Assert
     expect(divElements.length).toBe(2);
+}); 
+
+test('should create new element with error message when running displayNoResult()', () => {
+    //Arrange
+    document.body.innerHTML = `<form id="searchForm">
+    <input type="text" id="searchText" placeholder="Skriv titel här" />
+    <button type="submit" id="search">Sök</button>
+    </form> <div id="movie-container"></div>`
+
+    let container: HTMLDivElement = document.querySelector("#movie-container") as HTMLDivElement;
+
+    //Act
+    displayNoResult(container);
+
+    //Assert
+    expect(container.innerHTML).toContain("<p>");
+    expect(container.innerHTML).toContain("Inga sökresultat att visa");
 }); 
