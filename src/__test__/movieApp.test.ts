@@ -15,7 +15,7 @@ afterEach(() => {
     jest.restoreAllMocks();
 });
 
-test('should call function handleSubmit from init() when user clicks submit', async () => {
+test('should call function handleSubmit from init() when user clicks submit', () => {
     //Arrange
     document.body.innerHTML = `<form id="searchForm">
     <input type="text" id="searchText" placeholder="Skriv titel här" />
